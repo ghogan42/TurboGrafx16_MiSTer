@@ -249,7 +249,7 @@ parameter CONF_STR = {
 	"P1-;",
 	"P1OOP,Aspect ratio,Original,Full Screen,[ARC1],[ARC2];",
 	"P1O8A,Scandoubler Fx,None,HQ2x,CRT 25%,CRT 50%,CRT 75%;",
-	"P1OTV,Shadow Mask,Shadow 1,Shadow 2,RGB Stripe,MG Stripe,Mono Stripe,None;",
+	"P1OTV,Shadow Mask,None,Shadow 1,Shadow 2,RGB Stripe,MG Stripe,Mono Stripe;",
 	"P1-;",
 	"d6P1o0,Vertical Crop,Disabled,216p(5x);",
 	"d6P1o14,Crop Offset,0,2,4,8,10,12,-12,-10,-8,-6,-4,-2;",
@@ -731,7 +731,7 @@ wire [2:0] sl = scale ? scale - 1'd1 : 3'd0;
 wire [2:0] shadowmask_type = status[31:29];
 
 assign VGA_SL = sl[1:0];
-assign SHADOWMASK = shadowmask_type;
+assign SHADOWMASK = shadowmask_type-1;
 
 reg VSync, HSync;
 always @(posedge CLK_VIDEO) begin

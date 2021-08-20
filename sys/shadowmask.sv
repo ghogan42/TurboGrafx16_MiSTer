@@ -91,7 +91,7 @@ always @(posedge clk) begin
 	reg mask_disable;
 	
 	{rbit,gbit, bbit} = mask_lut[{shadowmask_type,vcount,hcount}];
-	mask_disable = (shadowmask_type == 5) ? 1 : 0;
+	mask_disable = (shadowmask_type > 4) ? 1 : 0;
 	
 	//This may not be the best way to do the calculation for best FMAX
 	//Also, I should check that the math is actually correct and the minus sign works...
